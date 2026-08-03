@@ -21,9 +21,7 @@ body{
   color:var(--bone);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   overflow-x:hidden;
-  visibility:hidden;
 }
-body.ready{visibility:visible;}
 ::selection{background:var(--red);color:var(--bone);}
 a{color:inherit;text-decoration:none;}
 img{display:block;max-width:100%;}
@@ -164,7 +162,7 @@ nav{
 }
 .hero-logo{
   width:100%;
-  max-width:380px;
+  max-width:540px;
   height:auto;
 }
 .hero p{
@@ -238,7 +236,6 @@ window.addEventListener("load", function(){
   var main = document.querySelector("main");
   setTimeout(function(){
     loader.classList.add("done");
-    document.body.classList.add("ready");
     main.classList.add("reveal");
   }, 1300);
 });
