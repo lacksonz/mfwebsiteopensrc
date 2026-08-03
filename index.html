@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>munkr funkr</title>
+<title>munkr funkrson</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+  }
   html, body {
     height: 100%;
   }
-
   body {
     font-family: "Inter", system-ui, sans-serif;
     background: #050403;
   }
-
   .hero {
     position: relative;
     min-height: 100svh;
@@ -32,17 +33,17 @@
     text-align: center;
     padding-bottom: 13vh;
   }
-
   .hero::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(to bottom, transparent 55%, rgba(5,4,3,0.75) 100%);
     pointer-events: none;
   }
-
   .tag {
     position: relative;
+    z-index: 2;
     color: #c9c2b8;
     font-size: 14px;
     letter-spacing: 0.5px;
@@ -51,47 +52,51 @@
     transform: translateY(10px);
     animation: rise 0.9s ease forwards 0.3s;
   }
-
   .quest-btn {
     position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     padding: 15px 30px;
     background: #ffffff;
-    color: #111;
+    color: #111111;
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
     border-radius: 8px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none;
+    transition: transform 0.3s ease;
     opacity: 0;
     transform: translateY(10px);
     animation: rise 0.9s ease forwards 0.55s;
   }
-
-  .quest-btn:hover, .quest-btn:focus-visible {
+  .quest-btn:hover,
+  .quest-btn:focus-visible {
     transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+    background: #ffffff;
   }
-
   @keyframes rise {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    .tag, .quest-btn { animation: none; opacity: 1; transform: none; }
+    .tag, .quest-btn {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
 </head>
 <body>
-
 <div class="hero">
   <p class="tag">get it for free yo</p>
+
   <a class="quest-btn" href="https://www.meta.com/experiences/">
     meta
   </a>
 </div>
-
 </body>
 </html>
