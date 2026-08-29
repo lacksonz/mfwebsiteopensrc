@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>xtra, a discord bot</title>
+<meta name="description" content="121 commands for discord. games, ai, moderation, automod, and a lot of nonsense.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#0a0a0a;
+  --panel:#101010;
+  --raised:#171717;
+  --ink:#f2f2f0;
+  --muted:#7a7a78;
+  --dim:#4e4e4c;
+  --line:#1c1c1c;
+  --accent:#f2f2f0;
+  --amber:#f2f2f0;
+  --teal:#f2f2f0;
+  --display:"Montserrat",system-ui,sans-serif;
+  --body:"Montserrat",system-ui,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,monospace;
+  --type:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+header{padding:26px 0;display:flex;justify-content:space-between;align-items:center}
+.mark{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.3px}
+.mark span{color:var(--dim)}
+nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+nav a{transition:color .15s}
+nav a:hover{color:var(--ink)}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:52px 0 68px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1.08;letter-spacing:-1.6px}
+h1 em{font-style:normal;color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:7px;text-decoration-color:var(--dim)}
+.lede{margin-top:20px;font-size:16px;font-weight:600;color:#9a9a97;max-width:40ch;line-height:1.6}
+.actions{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:7px;font-weight:600;font-size:14px;text-decoration:none;transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:#343434}
+
+.palette{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:none;overflow:hidden}
+.bar{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.slash{font-family:var(--type);color:var(--dim);font-weight:500;font-size:14px}
+.typed{font-family:var(--type);font-size:14px;letter-spacing:0}
+.caret{display:inline-block;width:7px;height:15px;background:var(--ink);vertical-align:-3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.rows{padding:6px}
+.row{display:flex;gap:11px;align-items:baseline;padding:9px 11px;border-radius:8px}
+.row.lit{background:var(--raised)}
+.row.lit b{color:#fff}
+.row b{font-family:var(--type);font-weight:500;font-size:13px;letter-spacing:0}
+.row i{font-style:normal;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:26px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-size:31px;font-weight:700;letter-spacing:-1.1px;font-variant-numeric:tabular-nums}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;font-weight:500}
+
+section{padding:64px 0}
+h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.6px;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:26px;font-size:15px}
+
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+#search{flex:1;min-width:210px;font-family:var(--display);font-weight:500;font-size:13.5px;padding:11px 14px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--ink);transition:border-color .15s}
+#search:focus{border-color:#343434;outline:none}
+#search::placeholder{color:#4e4e4c}
+.chip{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 15px;border-radius:20px;font:500 12.5px var(--body);cursor:pointer;letter-spacing:.1px;transition:color .15s,border-color .15s}
+.chip:hover{color:var(--ink);border-color:#2e2e2e}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+
+.group{margin-bottom:34px}
+.grouphead{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.grouphead h3{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:1.4px;text-transform:uppercase}
+.grouphead p{color:var(--muted);font-size:13.5px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cmd{display:grid;grid-template-columns:minmax(150px,210px) 1fr;gap:16px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.cmd:last-child{border-bottom:0}
+.cmd code{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:-.1px;color:var(--ink);opacity:.92}
+.cmd:hover{background:var(--raised)}
+.cmd:hover code{opacity:1}
+.cmd p{color:var(--muted)}
+.none{padding:30px 16px;color:var(--muted);font-size:14px}
+
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.note h4{font-family:var(--display);font-weight:600;font-size:14.5px;margin-bottom:7px}
+.note p{color:var(--muted);font-size:14px}
+
+footer{border-top:1px solid var(--line);padding:30px 0 46px;color:var(--muted);font-size:13.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:36px;padding:34px 0 48px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .notes{grid-template-columns:1fr}
+  .cmd{grid-template-columns:1fr;gap:3px}
+  nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="mark">xtra<span>.</span></div>
+    <nav>
+      <a href="#commands">commands</a>
+      <a href="#about">how it works</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>121 commands.<br>one <em>very</em> busy bot.</h1>
+      <p class="lede">games you can actually play in chat, an ai that talks back and looks at your images, proper moderation with automod, and a pile of nonsense in between.</p>
+      <div class="actions">
+        <a class="btn" id="invite" href="#commands">add xtra</a>
+        <a class="btn ghost" href="#commands">browse commands</a>
+      </div>
+    </div>
+
+    <div class="palette" aria-hidden="true">
+      <div class="bar">
+        <span class="slash">/</span>
+        <span class="typed" id="typed"></span><span class="caret"></span>
+      </div>
+      <div class="rows" id="preview"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b id="s-servers">-</b><span>servers</span></div>
+    <div class="stat"><b id="s-installs">-</b><span>user added</span></div>
+    <div class="stat"><b id="s-commands">121</b><span>commands</span></div>
+    <div class="stat"><b id="s-people">-</b><span>people reached</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="commands">
+    <h2>every command</h2>
+    <p class="sub">search it, or filter by what you're after.</p>
+
+    <div class="tools">
+      <input id="search" placeholder="search commands, try ban or tarot" autocomplete="off">
+      <button class="chip on" data-c="all">all</button>
+      <button class="chip" data-c="fun">fun</button>
+      <button class="chip" data-c="games">games</button>
+      <button class="chip" data-c="ai">ai</button>
+      <button class="chip" data-c="mod">moderation</button>
+      <button class="chip" data-c="troll">troll</button>
+      <button class="chip" data-c="utility">utility</button>
+    </div>
+
+    <div id="listing"></div>
+  </section>
+
+  <section id="about">
+    <h2>how it works</h2>
+    <p class="sub">three things worth knowing before you add it.</p>
+    <div class="notes">
+      <div class="note">
+        <h4>works anywhere</h4>
+        <p>add it to a server, or to your own account and take the commands with you into dms and any server you're in.</p>
+      </div>
+      <div class="note">
+        <h4>the troll commands are fake</h4>
+        <p>/ban, /kick and /nuke do nothing at all. the real ones live under /mod and need the matching discord permission.</p>
+      </div>
+      <div class="note">
+        <h4>automod is opt in</h4>
+        <p>run /dashboard and pick what gets caught: invites, links, spam, shouting, mass mentions. mods are never caught by it.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>xtra, a discord bot</span>
+    <span>not affiliated with discord</span>
+  </footer>
+</div>
+
+<script>
+const API = "";
+const INVITE = "";
+
+const FALLBACK = [
+{"category":"ai","blurb":"talk to me, i see images too","commands":[{"name":"chat","about":"talk to me, i remember the conversation"},{"name":"see","about":"show me a picture and i'll tell you what's going on"},{"name":"readtext","about":"pull the text out of a screenshot"},{"name":"caption","about":"i'll caption your image like it's a meme"},{"name":"judge","about":"show me something and i'll rate it out of 10, harshly"},{"name":"ask","about":"one off question, no memory, nobody else sees it"},{"name":"reset","about":"wipe what i remember from this conversation"},{"name":"persona","about":"change my personality for this channel"},{"name":"translate","about":"translate anything into any language"},{"name":"explain","about":"explain something at whatever level you want"},{"name":"tldr","about":"summarise a wall of text"},{"name":"rewrite","about":"rewrite text in a different tone"},{"name":"story","about":"get a very short story about anything"},{"name":"debate","about":"i'll argue both sides of anything"},{"name":"recipe","about":"tell me what's in your fridge"},{"name":"nickname","about":"i'll come up with names for someone"},{"name":"lore","about":"invent an epic backstory for someone"},{"name":"whatif","about":"explore an alternate timeline"}]},
+{"category":"troll","blurb":"fake moderation, zero real power","commands":[{"name":"ban","about":"ban someone (legally distinct from an actual ban)"},{"name":"kick","about":"punt someone into orbit"},{"name":"timeout","about":"mute someone in a way that changes nothing"},{"name":"nuke","about":"delete the entire server (visually)"},{"name":"virus","about":"run a totally real security scan"},{"name":"warn","about":"issue an official looking warning"},{"name":"arrest","about":"detain a suspect"},{"name":"bsod","about":"crash someone's computer (spiritually)"},{"name":"excuse","about":"generate a bulletproof excuse"},{"name":"lawsuit","about":"sue someone for an absurd amount"},{"name":"deport","about":"relocate someone against their will"},{"name":"wanted","about":"put someone on a wanted poster"},{"name":"achievement","about":"unlock a fake achievement"},{"name":"alert","about":"send an official looking system alert"},{"name":"courtroom","about":"put someone on trial and let the chat vote"}]},
+{"category":"games","blurb":"buttons, modals, actual games","commands":[{"name":"doom","about":"play actual doom inside discord, no really"},{"name":"rps","about":"rock paper scissors, solo or against someone"},{"name":"trivia","about":"answer a question, feel smart or don't"},{"name":"guess","about":"guess my number"},{"name":"poll","about":"make a poll with buttons"},{"name":"tictactoe","about":"play tic tac toe against me or someone else"},{"name":"connect4","about":"connect four against someone"},{"name":"memory","about":"match all eight pairs"},{"name":"slots","about":"pull the lever"},{"name":"hilo","about":"higher or lower, how long can you last"},{"name":"bingo","about":"a chat bingo card you tick off as things happen"},{"name":"reaction","about":"first person to hit the button wins"},{"name":"wire","about":"four wires, one is safe, everyone watches"},{"name":"battle","about":"fight someone with a health bar and bad decisions"},{"name":"minesweeper","about":"a playable minesweeper board made of spoilers"}]},
+{"category":"fun","blurb":"chaos, opinions, bad decisions","commands":[{"name":"8ball","about":"ask the sphere"},{"name":"roast","about":"get absolutely cooked"},{"name":"compliment","about":"undo the damage"},{"name":"ship","about":"calculate a totally scientific match"},{"name":"rate","about":"rate literally anything out of 10"},{"name":"vibecheck","about":"run a vibe diagnostic"},{"name":"choose","about":"let fate decide"},{"name":"wheel","about":"spin a wheel of options"},{"name":"confess","about":"confess something anonymously"},{"name":"coinflip","about":"heads or tails"},{"name":"iq","about":"measure someone's intelligence, badly"},{"name":"aura","about":"check someone's aura points"},{"name":"dice","about":"roll dice, like 2d6 or d20"},{"name":"f","about":"pay respects to something"},{"name":"pet","about":"adopt something that will slowly resent you"},{"name":"text uwu","about":"ruin any sentence"},{"name":"text clap","about":"put claps between words"},{"name":"text reverse","about":"txet ruoy pilf"},{"name":"text vaporwave","about":"wide text"},{"name":"text cursed","about":"corrupt your text beyond recognition"},{"name":"text leet","about":"h4ck3r sp34k"},{"name":"text anagram","about":"scramble text into nonsense"},{"name":"text emojify","about":"turn text into big emoji letters"},{"name":"text mock","about":"rewrite text in the annoying way"},{"name":"roll fact","about":"a true thing you didn't need to know"},{"name":"roll wisdom","about":"ancient proverb, questionable origin"},{"name":"roll conspiracy","about":"the truth they don't want you to have"},{"name":"roll startup","about":"a billion dollar idea, free of charge"},{"name":"roll bandname","about":"name your band, pick your genre"},{"name":"roll npc","about":"roll a random rpg character"},{"name":"roll tarot","about":"a three card reading, past present future"},{"name":"roll horoscope","about":"today's reading, accurate to within a lifetime"},{"name":"roll fortune","about":"see your future"},{"name":"roll pickup","about":"a line that will not work"},{"name":"roll truth","about":"get a truth question"},{"name":"roll dare","about":"get dared into something stupid"},{"name":"roll wyr","about":"would you rather"}]},
+{"category":"mod","blurb":"real moderation, needs permissions","commands":[{"name":"mod kick","about":"kick a member"},{"name":"mod ban","about":"ban a member, they can be unbanned later"},{"name":"mod unban","about":"lift a ban"},{"name":"mod timeout","about":"mute someone for a while, actually"},{"name":"mod untimeout","about":"end a timeout early"},{"name":"mod purge","about":"bulk delete recent messages"},{"name":"mod slowmode","about":"set slowmode on this channel"},{"name":"mod lock","about":"stop everyone talking in this channel"},{"name":"mod unlock","about":"let everyone talk again"},{"name":"mod nick","about":"change someone's nickname"},{"name":"mod whois","about":"full detail on a member"},{"name":"mod prefix","about":"change the prefix for text commands here"},{"name":"mod autorole","about":"give new members a role automatically"},{"name":"dashboard","about":"get the setup panel for this server in your dms"}]},
+{"category":"utility","blurb":"the boring useful ones","commands":[{"name":"help","about":"see everything i can do"},{"name":"ping","about":"check if i'm alive"},{"name":"avatar","about":"steal someone's pfp"},{"name":"userinfo","about":"look someone up"},{"name":"serverinfo","about":"stats about this place"},{"name":"stats","about":"how i'm holding up"},{"name":"say","about":"make me say something"},{"name":"invite","about":"get me into your dms and every server"},{"name":"remind","about":"i'll ping you soon, max 14 minutes"},{"name":"quote","about":"attribute something to someone, fake deep style"},{"name":"tool hash","about":"hash some text"},{"name":"tool textstats","about":"count everything in a block of text"},{"name":"tool color","about":"preview any hex colour"},{"name":"tool convert","about":"convert between common units"},{"name":"tool countdown","about":"count down to a date"},{"name":"tool timestamp","about":"make a timestamp that shows local time for everyone"},{"name":"tool password","about":"generate a password nobody will remember"},{"name":"tool math","about":"do maths so you don't have to"},{"name":"tool bigemoji","about":"blow up a custom emoji"},{"name":"text morse","about":"morse code, both directions"},{"name":"text binary","about":"convert text to binary and back"},{"name":"text base64","about":"encode or decode base64"}]}
+];
+
+const LABELS = {ai:"ai", troll:"troll", fun:"fun", games:"games", mod:"moderation", utility:"utility"};
+let data = FALLBACK, filter = "all", query = "";
+
+const el = id => document.getElementById(id);
+const esc = t => String(t).replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+const count = n => n >= 1000 ? (n/1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/,"") + "k" : String(n);
+
+function paint(){
+  const box = el("listing");
+  const shown = data
+    .filter(g => filter === "all" || g.category === filter)
+    .map(g => ({...g, commands: g.commands.filter(c =>
+      !query || c.name.includes(query) || c.about.toLowerCase().includes(query))}))
+    .filter(g => g.commands.length);
+
+  if (!shown.length){
+    box.innerHTML = `<div class="list"><div class="none">nothing matches "${esc(query)}". try a shorter word.</div></div>`;
+    return;
+  }
+
+  box.innerHTML = shown.map(g => `
+    <div class="group">
+      <div class="grouphead">
+        <h3>${esc(LABELS[g.category] || g.category)}</h3>
+        <p>${esc(g.blurb)}</p>
+      </div>
+      <div class="list">
+        ${g.commands.map(c => `<div class="cmd"><code>/${esc(c.name)}</code><p>${esc(c.about)}</p></div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function counts(){
+  const total = data.reduce((n, g) => n + g.commands.length, 0);
+  el("s-commands").textContent = total;
+}
+
+async function live(){
+  if (!API) return;
+  try {
+    const r = await fetch(API.replace(/\/$/,"") + "/api/public");
+    if (!r.ok) return;
+    const d = await r.json();
+    if (d.categories && d.categories.length) { data = d.categories; paint(); }
+    el("s-servers").textContent = count(d.servers);
+    el("s-installs").textContent = count(d.installs);
+    el("s-people").textContent = count(d.people);
+    el("s-commands").textContent = d.command_count;
+  } catch (e) {}
+}
+
+const SHOWCASE = ["doom","chat","mod timeout","roll tarot","connect4","see","bingo","reaction"];
+let si = 0, ci = 0, erasing = false;
+
+function typeloop(){
+  const word = SHOWCASE[si];
+  ci += erasing ? -1 : 1;
+  el("typed").textContent = word.slice(0, ci);
+
+  const all = data.flatMap(g => g.commands);
+  const partial = word.slice(0, ci);
+  const hits = (partial ? all.filter(c => c.name.startsWith(partial)) : all).slice(0, 5);
+  el("preview").innerHTML = hits.map((c, i) =>
+    `<div class="row ${i === 0 ? "lit" : ""}"><b>/${esc(c.name)}</b><i>${esc(c.about)}</i></div>`).join("");
+
+  let wait = erasing ? 45 : 95;
+  if (!erasing && ci === word.length){ erasing = true; wait = 1500; }
+  else if (erasing && ci === 0){ erasing = false; si = (si + 1) % SHOWCASE.length; wait = 320; }
+  setTimeout(typeloop, wait);
+}
+
+el("search").addEventListener("input", e => { query = e.target.value.trim().toLowerCase(); paint(); });
+document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
+  chip.classList.add("on");
+  filter = chip.dataset.c;
+  paint();
+}));
+if (INVITE) el("invite").href = INVITE;
+
+paint();
+counts();
+live();
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) typeloop();
+else {
+  el("typed").textContent = "chat";
+  el("preview").innerHTML = data[0].commands.slice(0,5).map((c,i) =>
+    `<div class="row ${i===0?"lit":""}"><b>/${c.name}</b><i>${c.about}</i></div>`).join("");
+}
+</script>
+</body>
+</html>
