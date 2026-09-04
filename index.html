@@ -115,22 +115,19 @@
     display: inline-flex;
     align-items: center;
     padding: 15px 30px;
-    background: #ffffff;
-    color: #111111;
+    background: #3a3733;
+    color: #8d8781;
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
     border-radius: 8px;
     box-shadow: none;
-    transition: transform 0.3s ease;
+    border: none;
+    font-family: inherit;
+    cursor: not-allowed;
     opacity: 0;
     transform: translateY(10px);
     animation: rise 0.9s ease forwards 0.55s;
-  }
-  .quest-btn:hover,
-  .quest-btn:focus-visible {
-    transform: translateY(-3px);
-    background: #ffffff;
   }
   @keyframes drop {
     to {
@@ -186,9 +183,9 @@
 </div>
 <div class="hero">
   <p class="tag">get it for free yo</p>
-  <a class="quest-btn" href="https://www.meta.com/en-gb/experiences/munkr-funkr/1140708545801463/">
-    meta
-  </a>
+  <button class="quest-btn" type="button" disabled>
+    coming soon
+  </button>
 </div>
 </body>
 </html>
