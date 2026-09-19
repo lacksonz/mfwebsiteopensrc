@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>put game on aopplab</title>
+  <meta name="description" content="KEXI">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1e1035;
+      --muted: #5f5578;
+      --purple-900: #905bdb;
+      --purple-700: #6d28d9;
+      --purple-500: #8b5cf6;
+      --purple-200: #ddd6fe;
+      --purple-50: #f6f2ff;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, #3b0f7a 0%, #aa83e7 45%, #b9a3fb 100%);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Montserrat", system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--purple-50) 0%, var(--white) 38%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--purple-500);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246, 242, 255, 0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .links { display: flex; align-items: center; gap: 30px; list-style: none; }
+
+    .links a { font-weight: 600; font-size: 0.95rem; color: var(--muted); transition: color 0.2s; }
+    .links a:hover { color: var(--purple-700); }
+
+    .button {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: var(--purple-700);
+      color: var(--white) !important;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(109, 40, 217, 0.35); }
+
+    .button.light { background: var(--white); color: var(--purple-900) !important; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font: inherit;
+      font-weight: 700;
+      color: var(--purple-700);
+      cursor: pointer;
+    }
+
+    .hero {
+      background: var(--gradient);
+      color: var(--white);
+      border-radius: 34px;
+      padding: clamp(36px, 6vw, 80px);
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 48px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      bottom: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5.6vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      max-width: 46ch;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero .actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .ghost {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .ghost:hover { background: rgba(255, 255, 255, 0.15); }
+
+    .submission {
+      position: relative;
+      z-index: 1;
+      background: var(--white);
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 30px 60px rgba(30, 16, 53, 0.35);
+      animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(40px) rotate(2deg); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .submission h2 { font-size: 1.05rem; font-weight: 800; }
+    .submission small { color: var(--muted); font-weight: 500; }
+
+    .checks { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
+
+    .checks li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--purple-50);
+    }
+
+    .checks li::before {
+      content: "\2713";
+      flex: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--purple-700);
+      color: var(--white);
+      font-size: 0.8rem;
+      display: grid;
+      place-items: center;
+    }
+    .checks li.pending { background: var(--white); border: 2px dashed var(--purple-200); }
+
+    .checks li.pending::before {
+      content: "";
+      background: transparent;
+      border: 2px solid var(--purple-500);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      50% { box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.25); }
+    }
+
+    section { padding: clamp(64px, 9vw, 110px) 0 0; }
+
+    h2.title {
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      max-width: 20ch;
+    }
+
+    .intro { margin-top: 14px; color: var(--muted); max-width: 52ch; font-weight: 500; }
+
+    .services { margin-top: 44px; border-top: 2px solid var(--purple-200); }
+
+    .service {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 24px;
+      padding: 30px 0;
+      border-bottom: 2px solid var(--purple-200);
+    }
+    .service h3 { font-size: 1.35rem; font-weight: 700; color: var(--purple-900); }
+  .service p { color: var(--muted); font-weight: 500; max-width: 56ch; }
+
+    .steps {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 2px solid var(--purple-200);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: var(--white);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .steps h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .steps p { font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+
+    .contact {
+      margin-top: clamp(64px, 9vw, 110px);
+      background: var(--gradient);
+      color: var(--white);
+      border-radius: 34px;
+      padding: clamp(40px, 7vw, 84px);
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      max-width: 18ch;
+      margin-inline: auto;
+    }
+
+    .contact p { margin: 16px auto 32px; max-width: 46ch; font-weight: 500; color: rgba(255, 255, 255, 0.9); }
+
+    footer {
+      padding: 44px 0;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .service { grid-template-columns: 1fr; gap: 8px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .menu-toggle { display: block; }
+      .links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 22px 20px 26px;
+        background: var(--white);
+        box-shadow: 0 20px 30px rgba(30, 16, 53, 0.12);
+      }
+      .links.open { display: flex; }
+    }
+
+    @media (max-width: 520px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a href="#top" class="logo">KEXI</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="links">menu</button>
+      <ul class="links" id="links">
+        <li><a href="#services">what we do</a></li>
+        <li><a href="#process">how work</a></li>
+        <li><a class="button" href="https://discord.gg/5z5dQsF79u" target="_blank" rel="noopener">join the Discord</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap" id="top">
+    <div class="hero">
+      <div>
+        <h1>put your gth game on applab</h1>
+        <p>we use our org to put your gth game on applab</p>
+        <div class="actions">
+          <a class="button light" href="https://discord.gg/5z5dQsF79u" target="_blank" rel="noopener">join the Discord server</a>
+          <a class="ghost" href="#process">see how it works</a>
+        </div>
+      </div>
+
+      <div class="submission">
+        <h2>your game</h2>
+        <small>ready for applab within a weezk</small>
+        <ul class="checks">
+          <li>meta check applab</li>
+          <li>meta accept and we give you a keystore</li>
+          <li>game published</li>
+          <li class="pending">wait</li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="services">
+      <h2 class="title">what if the applab gets taken down ?</h2>
+      <p class="intro">we will make new applab, simple</p>
+
+      <div class="services">
+        <div class="service">
+          <h3>how we bypass meta checks</h3>
+          <p>we use a simple fangame template to bypass meta checks ,then we replace it with your apk / game</p>
+        </div>
+        <div class="service">
+          <h3>store page</h3>
+          <p>you will have to make a banner for the applab</p>
+        </div>
+        <div class="service">
+          <h3>your applab ONLY</h3>
+          <p>you get full acces to your applab</p>
+        </div>
+        <div class="service">
+          <h3>keystores</h3>
+          <p>bwe give you a keystore, and you use it</p>
+        </div>
+        <div class="service">
+          <h3>help</h3>
+          <p>open a ticket if you need any help</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2 class="title">we do all the work for you</h2>
+      <p class="intro">ejust open a ticket and request an applab</p>
+
+      <ol class="steps">
+        <li>
+          <h3>join the Discord</h3>
+          <p>say hi or sum</p>
+        </li>
+        <li>
+          <h3>open a ticket</h3>
+          <p>request applab by opening a ticket</p>
+        </li>
+        <li>
+          <h3>once done</h3>
+          <p>meta takes about 2 - 9 days to review applabs</p>
+        </li>
+        <li>
+          <h3>publish</h3>
+          <p>we will publish your gth when your ready</p>
+        </li>
+      </ol>
+    </section>
+    <div class="contact" id="contact">
+      <h2>want your game on applab ?</h2>
+      <p>join the discord and open a ticket.</p>
+      <a class="button light" href="https://discord.gg/5z5dQsF79u" target="_blank" rel="noopener">join the Discord server</a>
+      <iframe src="https://discord.com/widget?id=1550976766137339998&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="display:block;max-width:100%;margin:40px auto 0;border-radius:14px"></iframe>
+    </div>
+  <script>
+    const toggle = document.getElementById("menuToggle");
+    const links = document.getElementById("links");
+
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open);
+    });
+    links.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", false);
+      });
+    });
+    document.getElementById("year").textContent = "\u00a9 " + new Date().getFullYear() + " KEXI";
+  </script>
+</body>
+</html>
