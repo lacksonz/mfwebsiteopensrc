@@ -1,0 +1,205 @@
+<!-- uh the text in here was made with ai because im not writing allat -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>privacy policy — xtra</title>
+<meta name="description" content="what xtra stores, why, and how to get it removed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#0a0a0a;
+  --panel:#101010;
+  --raised:#171717;
+  --ink:#f2f2f0;
+  --muted:#9a9a97;
+  --dim:#6b6b69;
+  --line:#1c1c1c;
+  --display:"Montserrat",system-ui,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration-color:var(--dim)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+header{padding:26px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.mark{font-weight:700;font-size:18px;letter-spacing:-.3px}
+.mark span{color:var(--dim)}
+header nav a{font-size:13.5px;color:var(--muted);margin-left:20px}
+header nav a:hover{color:var(--ink)}
+
+.title{padding:56px 0 8px}
+h1{font-weight:800;font-size:clamp(28px,5vw,40px);letter-spacing:-1.2px}
+.updated{color:var(--muted);font-size:13.5px;margin-top:10px}
+.updated code{font-family:var(--mono);background:var(--panel);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+
+.lede{color:var(--muted);font-size:15.5px;max-width:56ch;margin:22px 0 10px}
+
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:30px 0 10px}
+nav.toc p{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--dim);font-weight:600;margin-bottom:10px}
+nav.toc ol{list-style:none;columns:2;gap:6px 20px}
+nav.toc li{font-size:13.5px;margin-bottom:6px;break-inside:avoid}
+nav.toc a{color:var(--muted)}
+nav.toc a:hover{color:var(--ink)}
+
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-weight:700;font-size:19px;letter-spacing:-.4px;margin-bottom:14px;display:flex;align-items:baseline;gap:10px}
+h2 small{font-family:var(--mono);color:var(--dim);font-weight:500;font-size:13px}
+p{margin-bottom:13px;font-size:15px;color:#e2e2df}
+p:last-child{margin-bottom:0}
+strong{color:#fff;font-weight:600}
+ul{margin:6px 0 16px 0;padding-left:20px}
+li{font-size:15px;color:#e2e2df;margin-bottom:8px;line-height:1.6}
+li::marker{color:var(--dim)}
+code{font-family:var(--mono);background:var(--panel);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:13.5px}
+
+.table{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0 18px}
+.row{display:grid;grid-template-columns:1fr 1.6fr auto;gap:14px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13.5px;align-items:baseline}
+.row:last-child{border-bottom:0}
+.row.head{background:var(--raised);font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.8px}
+.row b{font-weight:600}
+.row span{color:var(--muted)}
+.pill{font-family:var(--mono);font-size:11.5px;color:var(--dim);background:var(--raised);border-radius:20px;padding:2px 9px;white-space:nowrap;justify-self:start}
+
+.callout{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:0 8px 8px 0;padding:16px 18px;margin:16px 0;font-size:14.5px;color:var(--muted)}
+.callout strong{color:var(--ink)}
+
+footer{padding:40px 0 60px;color:var(--dim);font-size:13px}
+footer a{color:var(--muted)}
+
+@media(max-width:640px){
+  nav.toc ol{columns:1}
+  .row{grid-template-columns:1fr;gap:4px}
+  .pill{justify-self:start}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="mark">xtra <span>/ privacy</span></div>
+  <nav>
+    <a href="terms.html">terms</a>
+    <a href="index.html">home</a>
+  </nav>
+</header>
+
+<div class="title">
+  <h1>privacy policy</h1>
+  <div class="updated">last updated <code>25 september 2026</code></div>
+  <p class="lede">this covers what xtra (the bot) and its website collect, why, how long it's kept, and how to have it removed. written in plain terms rather than boilerplate.</p>
+</div>
+
+<nav class="toc">
+  <p>on this page</p>
+  <ol>
+    <li><a href="#what">1. what we collect</a></li>
+    <li><a href="#messages">2. message content</a></li>
+    <li><a href="#ai">3. ai features</a></li>
+    <li><a href="#voice">4. voice features</a></li>
+    <li><a href="#storage">5. where data lives</a></li>
+    <li><a href="#sharing">6. who else sees it</a></li>
+    <li><a href="#rights">7. your choices</a></li>
+    <li><a href="#kids">8. age requirement</a></li>
+    <li><a href="#changes">9. changes to this policy</a></li>
+    <li><a href="#contact">10. contact</a></li>
+  </ol>
+</nav>
+
+<section id="what">
+  <h2>1. what we collect <small>the short version</small></h2>
+  <p>xtra stores as little as it can get away with. mostly discord ids, not personal details, and almost nothing about you unless you interact with a feature that needs it.</p>
+  <div class="table">
+    <div class="row head"><span>data</span><span>used for</span><span>kept</span></div>
+    <div class="row"><b>server id, channel id</b><span>knowing where a setting applies — prefix, log channel, automod rules, jail role</span><span class="pill">while configured</span></div>
+    <div class="row"><b>your discord user id</b><span>warnings, moderator stats, ai usage limits, blacklist entries, afk status</span><span class="pill">until cleared</span></div>
+    <div class="row"><b>server + user id, no message text</b><span>daily ai use counters, so limits reset at midnight</span><span class="pill">rolling, 1 day</span></div>
+    <div class="row"><b>recent attachments</b><span>re-showing a deleted image in the mod log, if your server has logging on</span><span class="pill">short-lived, in memory only</span></div>
+    <div class="row"><b>your discord username</b><span>display purposes in logs, warnings and leaderboards</span><span class="pill">alongside the id</span></div>
+  </div>
+  <p>we don't collect emails, ip addresses, payment details, or anything from outside discord. we don't run ads or sell data to anyone, full stop.</p>
+</section>
+
+<section id="messages">
+  <h2>2. message content <small>the message content intent</small></h2>
+  <p>xtra reads message text for a small number of specific features, and only while those features are turned on:</p>
+  <ul>
+    <li><strong>text commands</strong> — commands typed with a prefix like <code>!kick</code> instead of a slash command. we're removing this feature on <strong>4 november 2026</strong>, at which point xtra stops needing to read ordinary messages at all.</li>
+    <li><strong>automod</strong> — a server admin can turn on filters for invite links, spam, mass mentions or shouting. this only runs in servers where an admin has explicitly enabled it.</li>
+    <li><strong>word chain and afk detection</strong> — checking whether a message continues a word chain game, or whether someone who marked themselves away has spoken again.</li>
+  </ul>
+  <div class="callout"><strong>what we don't do:</strong> we don't log, store, or review ordinary conversation. message text is read in memory to check the rules above and then discarded. it is never written to a database or sent anywhere outside that one check.</div>
+  <p>an exception is the edit and delete log, which is opt-in per server: if enabled, the before/after text of an edited or deleted message is posted to a channel your server's own staff chose, so they can moderate their own server. that's the only case where message text is retained, and it's retained by your server's log channel, not by us separately.</p>
+</section>
+
+<section id="ai">
+  <h2>3. ai features <small>chat, vision, captions, tts</small></h2>
+  <p>commands like <code>/chat</code>, <code>/see</code>, <code>/aicaption</code> and the text-based ai tools send what you type, and any image you attach, to <strong>Groq</strong>, our ai inference provider, in order to generate a reply. this is the same as pasting your message into any ai chat tool.</p>
+  <p>conversation history for <code>/chat</code> is kept in memory per channel so the bot can hold a conversation, capped at a small number of recent messages, and is wiped whenever you run <code>/reset</code>, whenever xtra restarts, or automatically once the cap is exceeded. it is not saved to disk.</p>
+  <p>text-to-speech commands (<code>/tts</code>, <code>/vctts</code>, soundboard) send the text you provide to <strong>Microsoft's Edge text-to-speech service</strong> to generate audio. no account or personal data is attached to that request beyond the text itself.</p>
+  <p>none of this data is used to train any model, ours or anyone else's.</p>
+</section>
+
+<section id="voice">
+  <h2>4. voice features</h2>
+  <p>xtra can join a voice channel to speak a message aloud (<code>/vctts</code>) or play a short sound (<code>/soundboard</code>). it does not listen to, record, or transcribe anything said in a voice channel. it joins only when a command is run, plays the requested audio, and does not otherwise process voice data.</p>
+  <p>if voice moderation or recording is added in the future, it will be off by default per server, require an explicit opt-in from that server's admins, and announce itself audibly whenever it's active. this policy will be updated before any such feature ships.</p>
+</section>
+
+<section id="storage">
+  <h2>5. where data lives</h2>
+  <p>settings (prefixes, autorole, automod rules, log channel, jail configuration, starboard settings) and the blacklist are stored on our hosting provider and persist across restarts. warnings and moderator stats are kept in memory by default and clear on restart, unless your server's owner has enabled longer persistence, in which case they're stored the same way as settings.</p>
+  <p>nothing is backed up to a third-party analytics or storage service. we don't use tracking cookies, pixels, or third-party ad networks on our website.</p>
+</section>
+
+<section id="sharing">
+  <h2>6. who else sees it</h2>
+  <p>data is visible to:</p>
+  <ul>
+    <li>the bot's operator, for running and maintaining the service, and for responding to abuse reports</li>
+    <li>your own server's staff, for anything posted to a log channel or dashboard your server chose to set up</li>
+    <li>groq and microsoft, for the specific ai and tts requests described above, governed by their own privacy terms</li>
+  </ul>
+  <p>we do not sell, rent, or otherwise share your data with advertisers or unrelated third parties.</p>
+</section>
+
+<section id="rights">
+  <h2>7. your choices</h2>
+  <ul>
+    <li><strong>reset your ai memory</strong> anytime with <code>/reset</code></li>
+    <li><strong>see your warnings</strong> with <code>/mod warnings</code> or the prefix equivalent</li>
+    <li><strong>ask a server admin</strong> to clear your warnings, remove you from a blacklist, or turn off a feature entirely</li>
+    <li><strong>ask us directly</strong> to delete data tied to your user id across every server the bot is in — see the contact section below</li>
+  </ul>
+  <p>removing the bot from a server does not automatically erase that server's stored settings; ask us if you'd like that data cleared too.</p>
+</section>
+
+<section id="kids">
+  <h2>8. age requirement</h2>
+  <p>xtra follows discord's own terms of service, which require users to be at least 13, or the minimum age in their country if higher. we don't knowingly collect data from anyone below that age beyond what discord itself already requires to hold an account.</p>
+</section>
+
+<section id="changes">
+  <h2>9. changes to this policy</h2>
+  <p>if this policy changes in a way that matters, the "last updated" date at the top will change and, where practical, we'll note it in the bot's server. continuing to use xtra after an update means you accept the current version.</p>
+</section>
+
+<section id="contact">
+  <h2>10. contact</h2>
+  <p>questions, data requests, or concerns: reach the bot owner through the contact details on <a href="index.html">the xtra website</a>, or open a support request in the bot's official server if one is linked there.</p>
+</section>
+
+</div>
+<footer>
+  <div class="wrap">xtra &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">terms</a></div>
+</footer>
+</body>
+</html>
