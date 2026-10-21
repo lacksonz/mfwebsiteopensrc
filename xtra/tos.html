@@ -1,0 +1,193 @@
+<!-- uh the text in here was made with ai because im not writing allat -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>terms of service — xtra</title>
+<meta name="description" content="the rules for using xtra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#0a0a0a;
+  --panel:#101010;
+  --raised:#171717;
+  --ink:#f2f2f0;
+  --muted:#9a9a97;
+  --dim:#6b6b69;
+  --line:#1c1c1c;
+  --display:"Montserrat",system-ui,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration-color:var(--dim)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+header{padding:26px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.mark{font-weight:700;font-size:18px;letter-spacing:-.3px}
+.mark span{color:var(--dim)}
+header nav a{font-size:13.5px;color:var(--muted);margin-left:20px}
+header nav a:hover{color:var(--ink)}
+
+.title{padding:56px 0 8px}
+h1{font-weight:800;font-size:clamp(28px,5vw,40px);letter-spacing:-1.2px}
+.updated{color:var(--muted);font-size:13.5px;margin-top:10px}
+.updated code{font-family:var(--mono);background:var(--panel);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+
+.lede{color:var(--muted);font-size:15.5px;max-width:56ch;margin:22px 0 10px}
+
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:30px 0 10px}
+nav.toc p{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--dim);font-weight:600;margin-bottom:10px}
+nav.toc ol{list-style:none;columns:2;gap:6px 20px}
+nav.toc li{font-size:13.5px;margin-bottom:6px;break-inside:avoid}
+nav.toc a{color:var(--muted)}
+nav.toc a:hover{color:var(--ink)}
+
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-weight:700;font-size:19px;letter-spacing:-.4px;margin-bottom:14px;display:flex;align-items:baseline;gap:10px}
+h2 small{font-family:var(--mono);color:var(--dim);font-weight:500;font-size:13px}
+p{margin-bottom:13px;font-size:15px;color:#e2e2df}
+p:last-child{margin-bottom:0}
+strong{color:#fff;font-weight:600}
+ul{margin:6px 0 16px 0;padding-left:20px}
+li{font-size:15px;color:#e2e2df;margin-bottom:8px;line-height:1.6}
+li::marker{color:var(--dim)}
+code{font-family:var(--mono);background:var(--panel);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:13.5px}
+
+.callout{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:0 8px 8px 0;padding:16px 18px;margin:16px 0;font-size:14.5px;color:var(--muted)}
+.callout strong{color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.card b{display:block;font-size:14px;margin-bottom:4px}
+.card span{font-size:13px;color:var(--muted)}
+
+footer{padding:40px 0 60px;color:var(--dim);font-size:13px}
+footer a{color:var(--muted)}
+
+@media(max-width:640px){
+  nav.toc ol{columns:1}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="mark">xtra <span>/ terms</span></div>
+  <nav>
+    <a href="privacy.html">privacy</a>
+    <a href="index.html">home</a>
+  </nav>
+</header>
+
+<div class="title">
+  <h1>terms of service</h1>
+  <div class="updated">last updated <code>25 september 2026</code></div>
+  <p class="lede">the rules for using xtra. using the bot, its dashboard, or this website means you agree to what's below.</p>
+</div>
+
+<nav class="toc">
+  <p>on this page</p>
+  <ol>
+    <li><a href="#accept">1. acceptance</a></li>
+    <li><a href="#eligibility">2. who can use it</a></li>
+    <li><a href="#use">3. acceptable use</a></li>
+    <li><a href="#mod">4. moderation features</a></li>
+    <li><a href="#ai">5. ai and voice features</a></li>
+    <li><a href="#avail">6. availability</a></li>
+    <li><a href="#liability">7. limitation of liability</a></li>
+    <li><a href="#suspend">8. suspension and termination</a></li>
+    <li><a href="#discord">9. relationship to discord</a></li>
+    <li><a href="#changes">10. changes to these terms</a></li>
+    <li><a href="#contact">11. contact</a></li>
+  </ol>
+</nav>
+
+<section id="accept">
+  <h2>1. acceptance <small>the deal</small></h2>
+  <p>by adding xtra to a server, running its commands, or using its website or dashboard, you agree to these terms and to our <a href="privacy.html">privacy policy</a>. if you're setting the bot up on behalf of a server, you're confirming you have the authority to do that for that server.</p>
+</section>
+
+<section id="eligibility">
+  <h2>2. who can use it</h2>
+  <p>you must meet discord's own minimum age requirement to use discord at all, which is 13 in most places, or higher where local law requires it. server administrators are responsible for making sure the bot's features are appropriate for their community.</p>
+</section>
+
+<section id="use">
+  <h2>3. acceptable use</h2>
+  <p>don't use xtra to:</p>
+  <ul>
+    <li>break discord's own <strong>terms of service</strong> or <strong>community guidelines</strong></li>
+    <li>harass, threaten, or target real people, including through the joke or roleplay commands</li>
+    <li>attempt to overload, spam, or abuse the bot's commands, api, or dashboard</li>
+    <li>exploit a bug for personal gain or to disrupt other servers</li>
+    <li>circumvent a blacklist, a jail, or another server's own moderation setup</li>
+    <li>use generated ai content (text, images, audio) to impersonate a real person in a way intended to deceive, defraud, or harass</li>
+  </ul>
+  <div class="callout"><strong>the <code>/impersonate</code> command:</strong> writes a short, clearly-labelled fake message in someone's texting style, for a laugh among people who already know each other. it is not for impersonating someone outside that context, and every message it produces is labelled as generated.</div>
+</section>
+
+<section id="mod">
+  <h2>4. moderation features</h2>
+  <p>xtra provides real moderation tools — kicks, bans, timeouts, warnings, a jail system, and automod — that act with the discord permissions your server has granted the bot. these are provided as-is. you're responsible for configuring them appropriately for your server, granting the bot only the permissions it needs, and reviewing its actions.</p>
+  <p>the joke commands (where present) are cosmetic and perform no real moderation action, regardless of their name.</p>
+  <p>a jail configuration strips and later restores a member's roles. we make a reasonable effort to store and return those roles correctly, but if a role is deleted, or moved above the bot's own role, while someone is jailed, it may not be restorable, and that's on discord's permission model rather than something we can bypass.</p>
+</section>
+
+<section id="ai">
+  <h2>5. ai and voice features</h2>
+  <p>ai-generated replies, images, captions and audio are produced by third-party models and may be inaccurate, out of date, or occasionally inappropriate despite filtering. don't rely on them for anything important — medical, legal, financial or safety-critical — without checking independently.</p>
+  <p>daily usage limits apply to ai features and reset at midnight utc. we may adjust these limits at any time without notice to keep the service sustainable for everyone.</p>
+  <p>voice features join a channel only when a command is run and do not otherwise process voice audio. see the <a href="privacy.html#voice">privacy policy</a> for more.</p>
+</section>
+
+<section id="avail">
+  <h2>6. availability</h2>
+  <div class="grid">
+    <div class="card"><b>no uptime guarantee</b><span>xtra is provided free of charge with no service-level guarantee</span></div>
+    <div class="card"><b>features can change</b><span>commands may be added, changed or removed as the bot develops</span></div>
+    <div class="card"><b>third parties can fail</b><span>ai and voice features depend on external providers we don't control</span></div>
+    <div class="card"><b>maintenance happens</b><span>the bot may go offline for updates, hosting issues, or maintenance</span></div>
+  </div>
+</section>
+
+<section id="liability">
+  <h2>7. limitation of liability</h2>
+  <p>xtra is provided <strong>as-is</strong>, without warranty of any kind. to the fullest extent the law allows, the bot's operator is not liable for any damages, direct or indirect, arising from your use of the bot, including moderation actions taken through it, ai-generated content, or downtime.</p>
+  <p>you use xtra's moderation, ai and voice features at your own discretion. always review a moderation action before relying on it, and never share information through the bot that you wouldn't otherwise post in that server.</p>
+</section>
+
+<section id="suspend">
+  <h2>8. suspension and termination</h2>
+  <p>we may block a user or remove the bot from a server, without notice, for violating these terms, abusing the bot, or in response to a report of harm. a server admin can remove the bot at any time by revoking its access through discord's own server settings.</p>
+</section>
+
+<section id="discord">
+  <h2>9. relationship to discord</h2>
+  <p>xtra is an independent bot built using discord's public api. it is not made, endorsed, or supported by discord inc. your use of discord itself remains governed by discord's own <a href="https://discord.com/terms" target="_blank" rel="noopener">terms of service</a> and <a href="https://discord.com/guidelines" target="_blank" rel="noopener">community guidelines</a>, which take priority over anything here in the event of a conflict.</p>
+</section>
+
+<section id="changes">
+  <h2>10. changes to these terms</h2>
+  <p>these terms may be updated as the bot changes. the "last updated" date at the top reflects the most recent revision. continuing to use xtra after a change means you accept the updated terms.</p>
+</section>
+
+<section id="contact">
+  <h2>11. contact</h2>
+  <p>questions about these terms: reach the bot owner through the contact details on <a href="index.html">the xtra website</a>, or the bot's official support server if one is linked there.</p>
+</section>
+
+</div>
+<footer>
+  <div class="wrap">xtra &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">terms</a></div>
+</footer>
+</body>
+</html>
